@@ -39,6 +39,10 @@ public abstract class Car implements Movable{
         return color;
     }
 
+    public double getDirection() {
+        return direction;
+    }
+
     public void setColor(Color clr) {
         color = clr;
     }
@@ -72,5 +76,9 @@ public abstract class Car implements Movable{
     abstract void incrementSpeed(double amount);
 
     abstract void decrementSpeed(double amount);
+
+    abstract void gas(double amount);
+
+    abstract void brake(double amount);
 
 }

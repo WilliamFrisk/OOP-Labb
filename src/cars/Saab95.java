@@ -10,6 +10,10 @@ public class Saab95 extends Car{
         turboOn = false;
     }
 
+    public boolean getTurboOn() {
+        return turboOn;
+    }
+
     public void setTurboOn(){
 	    turboOn = true;
     }
@@ -30,16 +34,18 @@ public class Saab95 extends Car{
     }
 
     @Override
-    protected void decrementSpeed(double amount){
+    public void decrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
     
     // TODO fix this method according to lab pm
+    @Override
     public void gas(double amount){
         incrementSpeed(amount);
     }
 
     // TODO fix this method according to lab pm
+    @Override
     public void brake(double amount){
         decrementSpeed(amount);
     }
