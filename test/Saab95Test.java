@@ -1,3 +1,4 @@
+import cars.Car;
 import cars.Saab95;
 import org.junit.jupiter.api.Test;
 
@@ -10,5 +11,17 @@ public class Saab95Test {
         Saab95 testSaab = new Saab95();
         testSaab.startEngine();
         assertEquals(0.1, testSaab.getCurrentSpeed());
+    }
+
+    @Test
+    void getX_should_return_x() {
+        Saab95 testSaab = new Saab95();
+        assertEquals(0, testSaab.getX());
+    }
+
+    @Test
+    void getY_should_return_y() {
+        Saab95 testSaab = new Saab95();
+        assertEquals(0, testSaab.getY());
     }
 }
