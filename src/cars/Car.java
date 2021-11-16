@@ -2,7 +2,7 @@ package cars;
 
 import java.awt.*;
 
-abstract class Car implements Movable{
+public abstract class Car implements Movable{
     protected final int nrDoors; //Number of doors on the car
     private final double enginePower;
     protected double currentSpeed;
