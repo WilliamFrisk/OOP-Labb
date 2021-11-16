@@ -14,26 +14,28 @@ public class Volvo240 extends Car {
         return nrDoors;
     }
 
-    protected double speedFactor(){
+    public double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
     }
 
     @Override
-    protected void incrementSpeed(double amount){
+    public void incrementSpeed(double amount){
 	    currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
     }
 
     @Override
-    protected void decrementSpeed(double amount){
+    public void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
     // TODO fix this method according to lab pm
+    @Override
     public void gas(double amount){
         incrementSpeed(amount);
     }
 
     // TODO fix this method according to lab pm
+    @Override
     public void brake(double amount){
         decrementSpeed(amount);
     }
