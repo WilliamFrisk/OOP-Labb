@@ -24,4 +24,11 @@ public class Saab95Test {
         Saab95 testSaab = new Saab95();
         assertEquals(0, testSaab.getY());
     }
+    @Test
+    void incrementSpeed_should_increment_speed_by_correct_amount(){
+        Saab95 testSaab = new Saab95();
+        testSaab.incrementSpeed(1);
+        assertEquals(1.25, testSaab.getCurrentSpeed());
+    }
+
 }
