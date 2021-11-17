@@ -10,6 +10,7 @@ public class Volvo240Test {
         Volvo240 testVolvo = new Volvo240();
         assertEquals(4, testVolvo.getNrDoors());
     }
+
     @Test
     void speedFactor_should_return_correct_value(){
         Volvo240 testVolvo = new Volvo240();
