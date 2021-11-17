@@ -88,4 +88,34 @@ public class CarTest {
         testCar.turnRight();
         assertEquals((Math.PI/180), testCar.getDirection());
     }
+
+    @Test
+    void gas_increments_speed_by_correct_amount() throws Exception {
+    Saab95 testSaab = new Saab95();
+    testSaab.gas(1);
+    assertEquals(1.25, testSaab.getCurrentSpeed());
+    }
+
+    @Test
+    void gas_cant_increase_speed_over_engine_power() throws Exception {
+        Saab95 testCar = new Saab95();
+        for (int i = 0; i < 150; i++) {
+            testCar.gas(1);
+        }
+        assertEquals(testCar.getEnginePower(), testCar.getCurrentSpeed());
+    }
+
+    @Test
+    void brake_decrements_speed_by_correct_amount() throws Exception {
+        Saab95 testSaab = new Saab95();
+        testSaab.gas(1);
+        testSaab.brake(1);
+        assertEquals(0, testSaab.getCurrentSpeed());
+    }
+    @Test
+    void brake_cant_decrement_speed_under_0() throws Exception {
+        Saab95 testCar = new Saab95();
+        testCar.brake(1);
+        assertEquals(0, testCar.getCurrentSpeed());
+    }
 }
