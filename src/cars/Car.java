@@ -83,7 +83,7 @@ public abstract class Car implements Movable {
         if (0 <= amount && amount <= 1) {
             incrementSpeed(amount);
         } else {
-            throw new IllegalArgumentException("Invalid input to gas method");
+            throw new IllegalArgumentException("Argument in gas method > 1 or < 0");
         }
     }
 
@@ -91,7 +91,7 @@ public abstract class Car implements Movable {
         if (0 <= amount && amount <= 1) {
             decrementSpeed(amount);
         } else {
-            throw new IllegalArgumentException("Invalid input to break method");
+            throw new IllegalArgumentException("Argument in brake method >1 or <0");
         }
     }
 
