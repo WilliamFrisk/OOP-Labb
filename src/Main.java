@@ -3,7 +3,7 @@
 import cars.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IllegalArgumentException {
         Saab95 saab = new Saab95();
         Volvo240 volvo = new Volvo240();
 
@@ -20,7 +20,15 @@ public class Main {
             volvo.gas(1);
             System.out.println(volvo.getCurrentSpeed());
         }
-        
+
         volvo.getX();
+
+        Car[] carArray = {volvo, saab};
+
+        for (Car car : carArray) {
+            car.gas(0);
+        }
+
+
     }
 }

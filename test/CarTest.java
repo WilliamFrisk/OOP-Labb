@@ -1,10 +1,11 @@
 import cars.Car;
 import cars.Saab95;
+import cars.Volvo240;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
 
@@ -18,6 +19,18 @@ public class CarTest {
     void getY_should_return_y() {
         Car testCar = new Saab95();
         assertEquals(0, testCar.getY());
+    }
+
+    @Test
+    void getNrDoors_should_return_numbers_of_doors(){
+        Car testCar = new Volvo240();
+        assertEquals(4, testCar.getNrDoors());
+    }
+
+    @Test
+    void getModelName_should_return_modelName() {
+        Car testCar = new Saab95();
+        assertEquals("Saab95", testCar.getModelName());
     }
 
     @Test
@@ -90,14 +103,14 @@ public class CarTest {
     }
 
     @Test
-    void gas_increments_speed_by_correct_amount() throws Exception {
-    Saab95 testSaab = new Saab95();
-    testSaab.gas(1);
-    assertEquals(1.25, testSaab.getCurrentSpeed());
+    void gas_increments_speed_by_correct_amount() throws IllegalArgumentException {
+        Saab95 testCar = new Saab95();
+        testCar.gas(1);
+        assertEquals(1.25, testCar.getCurrentSpeed());
     }
 
     @Test
-    void gas_cant_increase_speed_over_engine_power() throws Exception {
+    void gas_cant_increase_speed_over_engine_power() throws IllegalArgumentException {
         Saab95 testCar = new Saab95();
         for (int i = 0; i < 150; i++) {
             testCar.gas(1);
@@ -106,16 +119,38 @@ public class CarTest {
     }
 
     @Test
-    void brake_decrements_speed_by_correct_amount() throws Exception {
-        Saab95 testSaab = new Saab95();
-        testSaab.gas(1);
-        testSaab.brake(1);
-        assertEquals(0, testSaab.getCurrentSpeed());
+    void gas_throws_exception_on_illegal_argument(){
+        Saab95 testCar = new Saab95();
+        try {
+            testCar.gas(2);
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    void brake_decrements_speed_by_correct_amount() throws IllegalArgumentException {
+        Saab95 testCar = new Saab95();
+        testCar.gas(1);
+        testCar.brake(1);
+        assertEquals(0, testCar.getCurrentSpeed());
     }
     @Test
-    void brake_cant_decrement_speed_under_0() throws Exception {
+    void brake_cant_decrement_speed_under_0() throws IllegalArgumentException {
         Saab95 testCar = new Saab95();
         testCar.brake(1);
         assertEquals(0, testCar.getCurrentSpeed());
+    }
+
+    @Test
+    void brake_throws_exception_on_illegal_argument(){
+        Saab95 testCar = new Saab95();
+        try {
+            testCar.brake(2);
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
     }
 }
