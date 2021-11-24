@@ -7,7 +7,7 @@ public abstract class Truck extends Vehicle {
         super(nrDoors, enginePower, color, modelName);
     }
 
-
+//hej sandra
 
 
 }
