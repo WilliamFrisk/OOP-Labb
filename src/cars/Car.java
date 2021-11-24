@@ -2,8 +2,8 @@ package cars;
 
 import java.awt.*;
 
-public abstract class Car implements Movable{
-    protected final int nrDoors; // Number of doors on the car
+public abstract class Car implements Movable {
+    private final int nrDoors; // Number of doors on the car
     private final double enginePower;
     private double currentSpeed;
     private Color color;
@@ -25,6 +25,14 @@ public abstract class Car implements Movable{
 
     public int getY() {
         return position[1];
+    }
+
+    public int getNrDoors(){
+        return nrDoors;
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 
     public double getEnginePower() {
@@ -71,19 +79,19 @@ public abstract class Car implements Movable{
         direction += (Math.PI/180);
     }
 
-    public void gas(double amount) throws Exception { // Calls method incrementSpeed if amount is within correct range.
+    public void gas(double amount) throws IllegalArgumentException { // Calls method incrementSpeed if amount is within correct range.
         if (0 <= amount && amount <= 1) {
             incrementSpeed(amount);
         } else {
-            throw new Exception("Invalid input to gas method");
+            throw new IllegalArgumentException("Argument in gas method >1 or <0");
         }
     }
 
-    public void brake(double amount) throws Exception { // Calls method decrementSpeed if amount is within correct range.
+    public void brake(double amount) throws IllegalArgumentException { // Calls method decrementSpeed if amount is within correct range.
         if (0 <= amount && amount <= 1) {
             decrementSpeed(amount);
         } else {
-            throw new Exception("Invalid input to break method");
+            throw new IllegalArgumentException("Argument in brake method >1 or <0");
         }
     }
 

@@ -21,8 +21,9 @@ public class Saab95 extends Car{
     public void setTurboOff(){
 	    turboOn = false;
     }
-    
-    protected double speedFactor(){ // Returns a speedFactor based on enginePower and whether turno is on or off. 
+
+    @Override
+    public double speedFactor(){ // Returns a speedFactor based on enginePower and whether turbo is on or off.
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return getEnginePower() * 0.01 * turbo;

@@ -9,11 +9,8 @@ public class Volvo240 extends Car {
     public Volvo240(){
         super(4, 100, Color.black, "Volvo240");
     }
-    
-    public int getNrDoors(){
-        return nrDoors;
-    }
 
+    @Override
     public double speedFactor(){  // Returns a speedFactor based on enginePower and trimFactor
         return getEnginePower() * 0.01 * trimFactor;
     }
