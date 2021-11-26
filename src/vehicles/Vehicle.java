@@ -1,4 +1,4 @@
-package cars;
+package vehicles;
 
 import java.awt.*;
 
@@ -55,6 +55,10 @@ public abstract class Vehicle implements Movable {
         color = clr;
     }
 
+    public void setPosition(int[] pos) {
+        position = pos;
+    }
+
     public void stopEngine() {
         currentSpeed = 0;
     }
@@ -94,6 +98,10 @@ public abstract class Vehicle implements Movable {
             throw new IllegalArgumentException("Argument in brake method >1 or <0");
         }
     }
+
+    public double distanceTo(Vehicle other) {
+        return 0;
+    } // TODO implementera denna igen
 
     private void incrementSpeed(double amount){ // Increments the speed of the car, max = enginePower
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
