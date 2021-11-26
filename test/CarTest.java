@@ -1,6 +1,6 @@
-import cars.Car;
-import cars.Saab95;
-import cars.Volvo240;
+import vehicles.cars.Car;
+import vehicles.cars.Saab95;
+import vehicles.cars.Volvo240;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;

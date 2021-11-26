@@ -1,5 +1,4 @@
-import cars.Saab95;
-import cars.Volvo240;
+import vehicles.cars.Saab95;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

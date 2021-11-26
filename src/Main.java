@@ -1,6 +1,8 @@
 
 
-import cars.*;
+import vehicles.cars.Car;
+import vehicles.cars.Saab95;
+import vehicles.cars.Volvo240;
 
 public class Main {
     public static void main(String[] args) throws IllegalArgumentException {

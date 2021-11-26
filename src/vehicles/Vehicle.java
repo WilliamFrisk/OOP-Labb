@@ -1,4 +1,4 @@
-package cars;
+package vehicles;
 
 import java.awt.*;
 
@@ -51,6 +51,10 @@ public abstract class Vehicle implements Movable {
         return direction;
     }
 
+    public void setPosition(int[] pos) {
+        position = pos;
+    }
+
     public void setColor(Color clr) {
         color = clr;
     }
@@ -93,6 +97,11 @@ public abstract class Vehicle implements Movable {
         } else {
             throw new IllegalArgumentException("Argument in brake method >1 or <0");
         }
+    }
+
+    public double distanceTo(Vehicle other) {
+        double d2 = Math.pow(other.getX() - getX(), 2) + Math.pow(other.getY() - getY(), 2);
+        return Math.sqrt(d2);
     }
 
     private void incrementSpeed(double amount){ // Increments the speed of the car, max = enginePower

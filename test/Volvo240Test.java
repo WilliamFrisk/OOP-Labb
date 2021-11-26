@@ -1,6 +1,6 @@
 
 import org.junit.jupiter.api.Test;
-import cars.Volvo240;
+import vehicles.cars.Volvo240;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Volvo240Test {

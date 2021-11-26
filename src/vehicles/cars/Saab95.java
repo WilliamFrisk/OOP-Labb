@@ -1,8 +1,10 @@
-package cars;
+package vehicles.cars;
+
+import vehicles.cars.Car;
 
 import java.awt.*;
 
-public class Saab95 extends Car{
+public class Saab95 extends Car {
     private boolean turboOn;
 
     public Saab95(){

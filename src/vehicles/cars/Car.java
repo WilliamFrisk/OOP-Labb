@@ -1,4 +1,6 @@
-package cars;
+package vehicles.cars;
+
+import vehicles.Vehicle;
 
 import java.awt.*;
 
