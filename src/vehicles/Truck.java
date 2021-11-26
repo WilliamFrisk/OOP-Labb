@@ -1,4 +1,4 @@
-package cars;
+package vehicles;
 
 import java.awt.*;
 
@@ -34,5 +34,4 @@ public abstract class Truck extends Vehicle {
 
 // Ska det vara hålla inne och sänka eller ska den sänkas till 0 direkt?
 // Samma sak på höjningen, olika nivåer eller hålla inne till ev maxhöjd?
-
 }
