@@ -1,5 +1,7 @@
 package vehicles;
 
+import DataTypes.CarStorage;
+
 import java.awt.*;
 import java.util.Stack;
 
@@ -11,17 +13,16 @@ import java.util.Stack;
  * @author Oscar Sävinger
  */
 public class CarTransport extends Truck {
-    private final Stack<Car> load = new Stack<>();
-    private final int capacity;
+    private final CarStorage<Car> load;
     private boolean isLowered;
 
     /**
      * Constructs a CarTransport
      */
-    public CarTransport() {
+    public CarTransport(int capacity) {
         super(2, 200, Color.BLACK, "CarTransport", 8500);
-        capacity = 5;
-        isLowered = false;
+        this.load = new CarStorage<>(capacity);
+        this.isLowered = false;
     }
 
     /**
@@ -29,7 +30,7 @@ public class CarTransport extends Truck {
      *
      * @return a stack consisting of the cars on the CarTransport
      */
-    public Stack<Car> getLoad() {
+    public CarStorage<Car> getLoad() {
         return load;
     }
 
@@ -67,12 +68,11 @@ public class CarTransport extends Truck {
      * @param car the car to be loaded
      */
     public void loadCar(Car car) {
-        if (distanceTo(car) < 10 && !isFull() && isLowered) {
-            load.push(car);
+        if (distanceTo(car) < 10 && isLowered) {
+            load.addCar(car);
         } else {
             // This should probably be implemented using a visual or audible cue in the future
-            System.out.println("The car to be loaded needs to be closer, the platform is full or the" +
-                    "platform isn't lowered");
+            System.out.println("The car to be loaded needs to be closer or the platform isn't lowered");
         }
     }
 
@@ -104,13 +104,8 @@ public class CarTransport extends Truck {
         }
     }
 
-    /**
-     * Returns the speedFactor of the CarTransport according to weight of its load
-     *
-     * @return the speedFactor of the CarTransport
-     */
-    public double speedFactor() {
-        return getCurrentSpeed() * 0.01 - getLoadWeight() * 0.001;
+    double speedFactor() {
+        return getEnginePower() * 0.01 - getLoadWeight() * 0.001;
     }
 
     private void updateLoadPosition() {
@@ -128,9 +123,5 @@ public class CarTransport extends Truck {
             loadWeight += car.getWeight();
         }
         return loadWeight;
-    }
-
-    private boolean isFull() {
-        return load.size() == capacity;
     }
 }

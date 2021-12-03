@@ -19,7 +19,7 @@ public class Scania extends Truck {
      */
     public Scania() {
         super(2, 200, Color.white, "Scania", 9000);
-        maxLoad = 7000;
+        this.maxLoad = 7000;
     }
 
     /**
@@ -67,14 +67,9 @@ public class Scania extends Truck {
         }
     }
 
-    /**
-     * Returns the speedFactor of the Scania truck according to weight of its load
-     *
-     * @return the speedFactor of the Scania truck
-     */
     @Override
     double speedFactor() {
-        return getCurrentSpeed() * 44.995 - getWeight();
+        return getEnginePower() * 0.01 - getWeight();
     }
 
     /**
