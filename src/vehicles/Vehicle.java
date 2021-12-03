@@ -128,15 +128,6 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Sets the position of the vehicle
-     *
-     * @param pos array with x and y values {x, y}
-     */
-    public void setPosition(int[] pos) {
-        position = pos;
-    }
-
-    /**
      * Sets the current speed of the vehicle to 0
      */
     public void stopEngine() {
@@ -212,6 +203,10 @@ public abstract class Vehicle implements Movable {
     public double distanceTo(Vehicle other) {
         double d2 = Math.pow(other.getX() - getX(), 2) + Math.pow(other.getY() - getY(), 2);
         return Math.sqrt(d2);
+    }
+
+    void setPosition(int[] pos) {
+        position = pos;
     }
 
     private void incrementSpeed(double amount){ // Increments the speed of the car, max = enginePower

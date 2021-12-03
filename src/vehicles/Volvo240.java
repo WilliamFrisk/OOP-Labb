@@ -26,7 +26,7 @@ public class Volvo240 extends Car {
      * @return the Volvo's speedFactor
      */
     @Override
-    public double speedFactor() {  // Returns a speedFactor based on enginePower and trimFactor
+    double speedFactor() {  // Returns a speedFactor based on enginePower and trimFactor
         return getEnginePower() * 0.01 * trimFactor;
     }
 }

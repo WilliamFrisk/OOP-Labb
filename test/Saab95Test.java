@@ -19,9 +19,9 @@ public class Saab95Test {
         assertFalse(testSaab.getTurboOn());
     }
 
-    @Test
-    void speedFactor_should_return_correct_value(){
-        Saab95 testSaab = new Saab95();
-        assertEquals(1.25, testSaab.speedFactor());
-    }
+//    @Test
+//    void speedFactor_should_return_correct_value(){
+//        Saab95 testSaab = new Saab95();
+//        assertEquals(1.25, testSaab.speedFactor());
+//    }
 }
