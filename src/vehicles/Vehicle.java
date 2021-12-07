@@ -28,12 +28,13 @@ public abstract class Vehicle implements Movable {
      * @param color the color of the vehicle
      * @param modelName the vehicle's model name
      */
-    protected Vehicle(int nrDoors, double enginePower, Color color, String modelName, int weight) {
+    protected Vehicle(int nrDoors, double enginePower, Color color, String modelName, int weight, int startY) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
         this.weight = weight;
+        this.position[1] = startY;
         stopEngine();
     }
 
@@ -125,6 +126,10 @@ public abstract class Vehicle implements Movable {
      */
     public void setColor(Color clr) {
         color = clr;
+    }
+
+    public void setX(int x) {
+        position[0] = x;
     }
 
     /**

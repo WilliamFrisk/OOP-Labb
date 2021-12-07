@@ -17,8 +17,8 @@ public class Scania extends Truck {
     /**
      * Constructs a Scania truck
      */
-    public Scania() {
-        super(2, 200, Color.white, "Scania", 9000);
+    public Scania(int startY) {
+        super(2, 200, Color.white, "Scania", 9000, startY);
         this.maxLoad = 7000;
     }
 
@@ -48,10 +48,14 @@ public class Scania extends Truck {
      * Highest angle is 70 degrees
      */
     public void raisePlatform() {
-        if (platformAngle == 70) {
-            System.out.println("Platform at highest point");
+        if (getCurrentSpeed() == 0) {
+            if (platformAngle == 70) {
+                System.out.println("Platform at highest point");
+            } else {
+                platformAngle++;
+            }
         } else {
-            platformAngle++;
+            System.out.println("Stop before raising platform");
         }
     }
 
@@ -69,7 +73,7 @@ public class Scania extends Truck {
 
     @Override
     double speedFactor() {
-        return getEnginePower() * 0.01 - getWeight();
+        return getEnginePower() * 0.01;
     }
 
     /**
