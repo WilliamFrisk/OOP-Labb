@@ -1,3 +1,5 @@
+import vehicles.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +23,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<ACar> cars = new ArrayList<>();
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
 
     //methods:
 
@@ -29,7 +31,9 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
+        cc.vehicles.add(new Volvo240(0));
+        cc.vehicles.add(new Saab95(100));
+        cc.vehicles.add(new Scania(200));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -43,11 +47,23 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (ACar car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getPosition().getX());
-                int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
+            for (Vehicle vehicle : vehicles) {
+                int x = vehicle.getX();
+                int y = vehicle.getY();
+                if (frame.getWidth() < x + frame.drawPanel.volvoImage.getWidth()) {
+                    invertDirection(vehicle);
+                    vehicle.setX(frame.getWidth() - frame.drawPanel.volvoImage.getWidth());
+                } else if (x < 0) {
+                    invertDirection(vehicle);
+                    vehicle.setX(0);
+                }
+
+                vehicle.move();
+
+                x = vehicle.getX();
+                y = vehicle.getY();
+
+                frame.drawPanel.moveit(x, y, vehicle);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -57,9 +73,68 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (ACar car : cars
-                ) {
+        for (Vehicle car : vehicles) {
             car.gas(gas);
+        }
+    }
+
+    // Calls the brake method for each car once
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Vehicle car : vehicles) {
+            car.brake(brake);
+        }
+    }
+
+    void invertDirection(Vehicle car) {
+        for (int i = 0; i < 180; i++) {
+            car.turnLeft();
+        }
+    }
+
+    // Implementera ett interface för detta så att koden beror på abstraktionen istället för implementationen
+    // då kan koden följa OCP
+    void turboOn() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOff();
+            }
+        }
+    }
+
+    void start() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.startEngine();
+        }
+    }
+
+    void stop() {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.stopEngine();
+        }
+    }
+
+    void liftBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                ((Scania) vehicle).raisePlatform();
+            }
+        }
+    }
+
+    void lowerBed() {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Scania) {
+                ((Scania) vehicle).lowerPlatform();
+            }
         }
     }
 }

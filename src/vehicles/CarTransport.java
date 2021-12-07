@@ -1,9 +1,8 @@
 package vehicles;
 
-import DataTypes.CarStorage;
+import dataTypes.CarStorage;
 
 import java.awt.*;
-import java.util.Stack;
 
 /**
  * This is a class modelling a car transport truck
@@ -19,8 +18,8 @@ public class CarTransport extends Truck {
     /**
      * Constructs a CarTransport
      */
-    public CarTransport(int capacity) {
-        super(2, 200, Color.BLACK, "CarTransport", 8500);
+    public CarTransport(int capacity, int startY) {
+        super(2, 200, Color.BLACK, "CarTransport", 8500, startY);
         this.load = new CarStorage<>(capacity);
         this.isLowered = false;
     }

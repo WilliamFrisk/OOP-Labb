@@ -2,8 +2,7 @@ package workshops;
 
 import vehicles.Car;
 
-import java.util.ArrayList;
-import DataTypes.CarStorage;
+import dataTypes.CarStorage;
 
 /**
  * This is a class modelling a car workshop

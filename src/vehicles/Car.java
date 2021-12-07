@@ -19,7 +19,7 @@ public abstract class Car extends Vehicle {
      * @param color the color of the vehicle
      * @param modelName the vehicle's model name
      */
-    protected Car (int nrDoors, double enginePower, Color color, String modelName, int weight) {
-        super(nrDoors, enginePower, color, modelName, weight);
+    protected Car (int nrDoors, double enginePower, Color color, String modelName, int weight, int startY) {
+        super(nrDoors, enginePower, color, modelName, weight, startY);
     }
 }

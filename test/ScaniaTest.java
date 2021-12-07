@@ -8,13 +8,13 @@ public class ScaniaTest {
 
     @Test
     void getPlatformAngle_should_return_platform_angle() {
-        Scania testTruck = new Scania();
+        Scania testTruck = new Scania(0);
         assertEquals(0, testTruck.getPlatformAngle());
     }
 
     @Test
     void raisePlatform_should_increment_platform_angle() {
-        Scania testTruck = new Scania();
+        Scania testTruck = new Scania(0);
         for (int i = 0; i < 3; i++) {
             testTruck.raisePlatform();
         }
@@ -23,7 +23,7 @@ public class ScaniaTest {
 
     @Test
     void lowerPlatform_should_decrement_platform_angle() {
-        Scania testTruck = new Scania();
+        Scania testTruck = new Scania(0);
         for (int i = 0; i < 3; i++) {
             testTruck.raisePlatform();
         }
@@ -35,7 +35,7 @@ public class ScaniaTest {
 
     @Test
     void move_should_not_update_position_if_platform_is_down() {
-        Scania testTruck = new Scania();
+        Scania testTruck = new Scania(0);
         for (int i = 0; i < 3; i++) {
             testTruck.raisePlatform();
         }

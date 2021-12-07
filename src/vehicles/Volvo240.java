@@ -16,8 +16,8 @@ public class Volvo240 extends Car {
     /**
      * Constructs a Volvo240
      */
-    public Volvo240(){
-        super(4, 100, Color.black, "Volvo240", 1400);
+    public Volvo240(int startY){
+        super(4, 100, Color.black, "Volvo240", 1400, startY);
     }
 
     /**
