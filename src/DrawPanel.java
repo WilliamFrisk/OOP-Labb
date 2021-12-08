@@ -10,7 +10,7 @@ import javax.swing.*;
 
 // This panel represents the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel implements VehicleObserver{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
@@ -24,13 +24,13 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
     void moveit(int x, int y, Vehicle vehicle) {
-        if (vehicle.getClass() == Volvo240.class) {
+        if (vehicle instanceof Volvo240) {
             volvoPoint.x = x;
             volvoPoint.y = y;
-        } else if (vehicle.getClass() == Saab95.class) {
+        } else if (vehicle instanceof Saab95) {
             saabPoint.x = x;
             saabPoint.y = y;
-        } else if (vehicle.getClass() == Scania.class) {
+        } else if (vehicle instanceof Scania) {
             scaniaPoint.x = x;
             scaniaPoint.y = y;
         }
@@ -70,5 +70,26 @@ public class DrawPanel extends JPanel{
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
         g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+    }
+
+    @Override
+    public void actOnUpdate(String modelName, int x, int y) {
+
+    }
+
+    private void drawVolvo() {
+
+    }
+
+    private void drawScania() {
+
+    }
+
+    private void drawSaab() {
+
+    }
+
+    private void drawCarTransport() {
+
     }
 }

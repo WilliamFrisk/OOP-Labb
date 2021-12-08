@@ -70,6 +70,16 @@ public class CarController {
         }
     }
 
+    /*
+    TITTA HÄR OGGE!!
+    ta bort all funktionalitet ur metoderna nedan och ersätt det med kall på metoder i VehicleModel
+    Strunta i invertDirection
+
+    Ex: void gas(int amount) {
+            VehicleModel.gasAllVehicles(amount);
+        }
+     */
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
