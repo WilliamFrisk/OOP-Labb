@@ -1,6 +1,7 @@
 import vehicles.*;
 
 import javax.swing.*;
+import javax.swing.tree.VariableHeightLayoutCache;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,6 +13,13 @@ import java.util.ArrayList;
  */
 
 public class CarController {
+    private final VehicleModel model;
+    public CarController(VehicleModel model) {
+        this.model = model;
+
+    }
+
+
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -82,19 +90,14 @@ public class CarController {
 
     // Calls the gas method for each car once
     void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Vehicle car : vehicles) {
-            car.gas(gas);
-        }
+        model.gasAllVehicles(amount);
     }
 
     // Calls the brake method for each car once
     void brake(int amount) {
-        double brake = ((double) amount) / 100;
-        for (Vehicle car : vehicles) {
-            car.brake(brake);
+        model.brakeAllVehicles(amount);
         }
-    }
+
 
     void invertDirection(Vehicle car) {
         for (int i = 0; i < 180; i++) {
@@ -105,46 +108,26 @@ public class CarController {
     // Implementera ett interface för detta så att koden beror på abstraktionen istället för implementationen
     // då kan koden följa OCP
     void turboOn() {
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Saab95) {
-                ((Saab95) vehicle).setTurboOn();
-            }
-        }
+        model.turboOn();
     }
 
     void turboOff() {
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Saab95) {
-                ((Saab95) vehicle).setTurboOff();
-            }
-        }
+        model.turboOff();
     }
 
     void start() {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.startEngine();
-        }
+        model.startAllVehicles();
     }
 
     void stop() {
-        for (Vehicle vehicle : vehicles) {
-            vehicle.stopEngine();
-        }
+        model.stopAllVehicles();
     }
 
     void liftBed() {
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).raisePlatform();
-            }
-        }
+        model.liftAllBeds();
     }
 
     void lowerBed() {
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle instanceof Scania) {
-                ((Scania) vehicle).lowerPlatform();
-            }
-        }
+        model.lowerAllBeds();
     }
 }
