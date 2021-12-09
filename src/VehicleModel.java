@@ -41,7 +41,7 @@ public class VehicleModel {
         // Loopa igenom alla fordon och kalla på startEngine
     }
 
-    public void stopAllVehicle() {
+    public void stopAllVehicles() {
         // Samma som startAllvehicles men med stopEngine
     }
 

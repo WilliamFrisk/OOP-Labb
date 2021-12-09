@@ -9,7 +9,7 @@ import java.awt.*;
  * @author Sandra Hawerman
  * @author Oscar Sävinger
  */
-public class Saab95 extends Car{
+public class Saab95 extends Car implements turboVehicle{
     private boolean turboOn;
 
     /**
